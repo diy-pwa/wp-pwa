@@ -26,7 +26,7 @@ class PHPLoader {
 }
 
 const php = new PHPLoader();
-const paths = ["", "sample"];
+const paths = ["", "sample-page", "hello-world"];
 for(let path of paths){
     const resp = await php.load(path);
     if(!fs.existsSync(`dist/${path}`)){
