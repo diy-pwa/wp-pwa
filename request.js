@@ -21,7 +21,8 @@ class PHPLoader {
             files: {},
             body: '',
         };
-        return await this.php.request(data);
+        let resp = await this.php.request(data);
+        return resp.text.replace(/(http|https):\/\/(localhost|127.0.0.1|playground\.wordpress\.net\/scope):\d+\.?\d*\/*/g, "/");
     }
 }
 
@@ -32,7 +33,7 @@ for(let path of paths){
     if(!fs.existsSync(`dist/${path}`)){
         await fs.promises.mkdir(`dist/${path}`, {recursive:true});
     }
-    await fs.promises.writeFile(`dist/${path}/index.html`, resp.bytes);
+    await fs.promises.writeFile(`dist/${path}/index.html`, resp);
 }
 
 process.exit(0);
