@@ -1,5 +1,6 @@
 import { NodePHP } from '@php-wasm/node';
 import fs from 'fs';
+import { AsyncDatabase } from "promised-sqlite3";
 
 class PHPLoader {
     async copyFolders(src, dest){
@@ -33,20 +34,24 @@ class PHPLoader {
             body: '',
         };
         let resp = await this.php.request(data);
-        return resp.text.replace(/(http|https):\/\/(localhost|127.0.0.1|playground\.wordpress\.net\/scope):\d+\.?\d*\/*/g, "/");
+        const contents =  resp.text.replace(/(http|https):\/\/(localhost|127.0.0.1|playground\.wordpress\.net\/scope):\d+\.?\d*\/*/g, "/");
+        if(!fs.existsSync(`dist/${sPath}`)){
+            await fs.promises.mkdir(`dist/${sPath}`, {recursive:true});
+        }
+        await fs.promises.writeFile(`dist/${sPath}/index.html`, contents);
+    
     }
 }
 
 const php = new PHPLoader();
 await php.copyFolders('wordpress/wp-content', 'dist/wp-content');
 await php.copyFolders('wordpress/wp-includes', 'dist/wp-includes');
-const paths = ["", "sample-page", "hello-world"];
-for(let path of paths){
-    const resp = await php.load(path);
-    if(!fs.existsSync(`dist/${path}`)){
-        await fs.promises.mkdir(`dist/${path}`, {recursive:true});
-    }
-    await fs.promises.writeFile(`dist/${path}/index.html`, resp);
+await php.load("");
+let db = await AsyncDatabase.open('./wordpress/wp-content/database/.ht.sqlite');
+const rows = await db.all(`SELECT post_name AS path
+FROM wp_posts WHERE post_type in ('PAGE','POST') and post_status = 'publish'`);
+for(let row of rows){
+    await php.load(row.path);
 }
-
-process.exit(0);
+await db.close();
+process.exit();
