@@ -15,7 +15,7 @@ class PHPLoader {
             
         }
         const data = {
-            url: `https://example.com/${sPath}`,
+            url: `https://example.com/${sPath == ""?"":sPath + "/"}`,
             headers: {},
             method: 'GET',
             files: {},
