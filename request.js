@@ -2,6 +2,17 @@ import { NodePHP } from '@php-wasm/node';
 import fs from 'fs';
 
 class PHPLoader {
+    async copyFolders(src, dest){
+        await fs.promises.mkdir(dest, {recursive:true});
+        const aDir = await fs.promises.readdir(src, { withFileTypes: true });
+        for(let sPath of aDir){
+            if(sPath.isDirectory()){
+                await this.copyFolders(`${src}/${sPath.name}`, `${dest}/${sPath.name}`);
+            }else if(!sPath.name.match(/(php|sqlite|htaccess)$/)){
+                await fs.promises.copyFile(`${src}/${sPath.name}`, `${dest}/${sPath.name}`);
+            }
+        }
+    }
     async load(sPath) {
         if (!this.php){
             const requestHandler = {
@@ -27,6 +38,8 @@ class PHPLoader {
 }
 
 const php = new PHPLoader();
+await php.copyFolders('wordpress/wp-content', 'dist/wp-content');
+await php.copyFolders('wordpress/wp-includes', 'dist/wp-includes');
 const paths = ["", "sample-page", "hello-world"];
 for(let path of paths){
     const resp = await php.load(path);
