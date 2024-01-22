@@ -3,3 +3,4 @@ dist
 wordpress
 repo
 *zip
+package-lock.json
