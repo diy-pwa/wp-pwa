@@ -1,6 +1,6 @@
 node_modules
 dist
 wordpress
-repo
-*zip
 package-lock.json
+wp-content
+wp-config.php
