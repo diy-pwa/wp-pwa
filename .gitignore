@@ -3,4 +3,5 @@ dist
 .wordpress
 package-lock.json
 wp-content
+wp-content-bak
 wp-config.php
