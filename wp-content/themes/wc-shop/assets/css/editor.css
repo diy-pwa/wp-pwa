@@ -1,0 +1,61 @@
+/*post date*/
+.wp-block-post-date::before{
+  content: "\f508";
+  font-family: 'Dashicons';
+  font-weight: 600;
+  padding-right: 5px;
+  font-size: 12px;
+}
+
+.post-author-name.wp-block-post-author-name::before{
+  content: "\f110";
+  font-family: 'Dashicons';
+  font-weight: 600;
+  padding-right: 5px;
+  font-size: 12px;
+}
+
+.featured-banner {
+    background-size: 40% !important;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+.wp-block-search .wp-block-search__label {
+  font-size: 30px;
+}
+
+a.wp-block-post-excerpt__more-link {
+  display: block;
+  background: var(--wp--preset--color--theme);
+  width: max-content;
+  margin: auto;
+  padding: 10px 30px;
+  color: var(--wp--preset--color--white);
+  text-decoration: none;
+  margin-top: 26px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.column-has-radius .wp-block-column {
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+p.new-tag {
+  position: absolute !important;
+  top: 10px;
+  background: #ff008d;
+  margin: 0;
+  left: 10px;
+  color: #fff;
+  padding: 2px 10px;
+  font-size: 11px;
+  border-radius: 5px;
+}
+
+p.new-tag.sale-tag {
+  background: #113976;
+}
