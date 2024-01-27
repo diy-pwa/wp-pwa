@@ -1,12 +1,16 @@
 {
   "name": "wp-pwa",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "lib/index.js",
   "type": "module",
   "bin": {
     "wp-pwa": "bin/wp-pwa.js"
   },
   "scripts": {
+    "build": "wp-pwa build",
+    "preview": "wp-pwa preview",
+    "dev": "wp-pwa dev",
+    "start": "wp-pwa dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
