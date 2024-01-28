@@ -30,6 +30,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - run: npm install
+      - run: npm link
       - run: npm run build
 
       - name: Deploy
