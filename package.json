@@ -7,8 +7,8 @@
     "wp-pwa": "bin/wp-pwa.js"
   },
   "scripts": {
-    "build": "wp-pwa build",
-    "preview": "wp-pwa preview",
+    "build": "wp-pwa build wp-pwa",
+    "preview": "wp-pwa preview wp-pwa",
     "dev": "wp-pwa dev",
     "start": "wp-pwa dev",
     "test": "echo \"Error: no test specified\" && exit 1"
