@@ -1,12 +1,16 @@
 {
   "name": "wp-pwa",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "lib/index.js",
   "type": "module",
   "bin": {
     "wp-pwa": "bin/wp-pwa.js"
   },
-  "scripts": {
+  "files": [
+    "!wp-config.php",
+    "!wp-content"
+  ],
+    "scripts": {
     "build": "wp-pwa build wp-pwa",
     "preview": "wp-pwa preview wp-pwa",
     "dev": "wp-pwa dev",
