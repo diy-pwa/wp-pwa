@@ -10,6 +10,7 @@ let app = null;
 switch(sCommand){
     case "build":
         await oLoader.build(process.argv[3]);
+        break;
     case "preview":
         app = await oLoader.preview(process.argv[3]);
         break;
