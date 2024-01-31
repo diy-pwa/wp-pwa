@@ -3,5 +3,4 @@ dist
 test
 .wordpress
 package-lock.json
-
 .env
