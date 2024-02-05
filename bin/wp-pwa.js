@@ -11,12 +11,15 @@ switch(sCommand){
     case "build":
         await oLoader.build(process.argv[3]);
         break;
+    case "create":
+        await oLoader.create();
+        break;
+    case "dev":
+    case "start":
+        app = await oLoader.dev();
+        break;
     case "preview":
         app = await oLoader.preview(process.argv[3]);
-        break;
-    case "start":
-    case "dev":
-        app = await oLoader.dev();
         break;
     default:
         console.log(`wp-pwa (build|preview|dev|start) ?output_folder`);
