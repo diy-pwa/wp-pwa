@@ -16,7 +16,7 @@ define( 'SQLITE_DB_DROPIN_VERSION', '1.8.0' );
 // Tweak to allow copy-pasting the file without having to run string-replacements.
 $sqlite_plugin_implementation_folder_path = '{SQLITE_IMPLEMENTATION_FOLDER_PATH}';
 if ( ! file_exists( $sqlite_plugin_implementation_folder_path ) ) { // Check that the folder exists.
-	$sqlite_plugin_implementation_folder_path = realpath( __DIR__ . '/plugins/sqlite-database-integration' );
+	$sqlite_plugin_implementation_folder_path = realpath( __DIR__ . '/mu-plugins/sqlite-database-integration' );
 }
 
 // Bail early if the SQLite implementation was not located in the plugin.
