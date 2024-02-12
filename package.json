@@ -19,7 +19,7 @@
     "@wp-playground/blueprints": "^0.5.6",
     "compressible": "^2.0.18",
     "compression": "^1.7.4",
-    "diy-pwa": "^1.0.98",
+    "diy-pwa": "^1.1.2",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.3",
     "promised-sqlite3": "^2.1.0",
