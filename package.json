@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "start": "vitest run spec",
-    "test": "vitest run spec"
+    "test": "vitest run spec",
+    "dev": "cd test && ../bin/wp-pwa.js dev"
   },
   "dependencies": {
     "@php-wasm/node": "^0.5.2",
