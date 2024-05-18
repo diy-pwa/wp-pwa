@@ -8,3 +8,4 @@
 1. bundle Zip.js and WordpressLoader.js with wp-mfe and consume in bin/diy-pwa.js
 1. do diy-pwa.gitub.io wordpress site
 1. make discord server
+1. make Url match when we add a remote
