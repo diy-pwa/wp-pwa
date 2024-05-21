@@ -9,4 +9,3 @@
 1. do diy-pwa.gitub.io wordpress site
 1. make discord server
 1. make Url match when we add a remote
-1. put workflow on marketplace
