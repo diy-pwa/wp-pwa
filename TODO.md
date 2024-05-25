@@ -3,7 +3,7 @@
 1. do a theme for diy-pwa.com and make it the diy-pwa repo
 2. transfer the 1 click child theme to diy-pwa
 3. publish both theme and plugin on WordPress.org
-4. transfer the other repositories from diy-pwa so that diy-pwa is only the theme, the plugin and the wordpress site
+4. transfer the other repositories from diy-pwa so that diy-pwa is only the theme, the plugin, sippycup and the wordpress site
 1. add gtag, serve the static site first and build the other site behind at diy-pwa.com
 1. consume wp-sitemap.xml to get the locs to generate, to write a sitemap.xml file and to generate search index
 1. make search micro front end
