@@ -1,6 +1,5 @@
 # Todos for November 11 2024
 
-1. write a sitemap.xml file 
 1. generate search index
 1. make search micro front end
 1. Update README.md
