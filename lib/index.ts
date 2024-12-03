@@ -5,7 +5,7 @@ import express from 'express';
 import compression from 'compression';
 import compressible from 'compressible';
 import fileUpload from 'express-fileupload';
-import { XMLParser, XMLBuilder } from 'fast-xml-parser';
+import { XMLParser } from 'fast-xml-parser';
 import xmlFormat from 'xml-formatter';
 
 const CORSPROXY = "https://wp-now-corsproxy.rhildred.workers.dev/corsproxy";
@@ -16,10 +16,10 @@ export default class {
         urlset: Array()
     }
     async build(sPath) {
-        let sHomePage = null;
+        let sHomePage:string = "";
         try{
-            this.dest = process.cwd();
-            const oContents = JSON.parse(await fs.promises.readFile(`${this.dest}/package.json`));
+            const dest:string = process.cwd();
+            const oContents = JSON.parse(String(await fs.promises.readFile(`${dest}/package.json`)));
             sHomePage = oContents.homepage;
             const oHomePage = new URL(sHomePage);
             sPath = typeof(sPath) == "undefined"? oHomePage.pathname: sPath;
@@ -43,11 +43,11 @@ export default class {
     }
 
     async create() {
-        this.dest = process.cwd();
+        const dest:string = process.cwd();
         let isPackageJSONChanged = false;
-        let oContents = { devDependencies: {}, scripts: {} };
-        if (fs.existsSync(`${this.dest}/package.json`)) {
-            oContents = JSON.parse(fs.readFileSync(`${this.dest}/package.json`).toString());
+        let oContents = { devDependencies: {}, scripts: { dev: "not implemented", start: "not implemented", test: "not implemented", preview: "not implemented", build: "not implemented" }, dependencies: {} };
+        if (fs.existsSync(`${dest}/package.json`)) {
+            oContents = JSON.parse(fs.readFileSync(`${dest}/package.json`).toString());
             if (oContents.dependencies) {
                 for (const sDependency of Object.keys(oContents.dependencies)) {
                     if (sDependency == "parcel-bundler") {
@@ -81,10 +81,10 @@ export default class {
             isPackageJSONChanged = true;
         }
         if (isPackageJSONChanged) {
-            fs.writeFileSync(`${this.dest}/package.json`, JSON.stringify(oContents, null, 2));
+            fs.writeFileSync(`${dest}/package.json`, JSON.stringify(oContents, null, 2));
         }
-        if (!fs.existsSync(`${this.dest}/.gitignore`)) {
-            fs.writeFileSync(`${this.dest}/.gitignore`,
+        if (!fs.existsSync(`${dest}/.gitignore`)) {
+            fs.writeFileSync(`${dest}/.gitignore`,
                 `.env
 node_modules
 dist
@@ -155,23 +155,23 @@ package-lock.json
                                 key,
                                 {
                                     key,
-                                    name: file.name,
-                                    size: file.size,
-                                    type: file.mimetype,
-                                    arrayBuffer: () => file.data.buffer,
+                                    name: (file as any).name,
+                                    size: (file as any).size,
+                                    type: (file as any).mimetype,
+                                    arrayBuffer: () => (file as any).data.buffer,
                                 },
                             ]
                         )
                     ),
                     body: body,
                 };
-                this.getContents(data).then((resp) => {
+                this.getContents(data, null).then((resp:any) => {
                     res.statusCode = resp.resp.httpStatusCode;
                     Object.keys(resp.resp.headers).forEach((key) => {
                         let value = resp.resp.headers[key];
                         if (key != "x-frame-options") {
                             if (key == "location") {
-                                const relative = this.getRelative(Array.isArray(value) ? value[0] : value);
+                                const relative = this.getRelative(Array.isArray(value) ? value[0] : value, null);
                                 res.setHeader(key, relative);
                             } else {
                                 res.setHeader(key, value);
@@ -356,7 +356,7 @@ ini_set('error_log', $log_file);?>`);
             }
         }
     }
-
+    php:any = null;
     async getPhpInstance() {
         if (!this.php) {
             this.php = await NodePHP.load('8.0', {

@@ -13,7 +13,9 @@
   "scripts": {
     "start": "vitest run spec",
     "test": "vitest run spec",
-    "dev": "cd test && ../bin/wp-pwa.js dev"
+    "dev": "mkdir -p test && cd test && vite-node ../bin/wp-pwa.ts dev",
+    "build": "mkdir -p test && cd test && vite-node ../bin/wp-pwa.ts build",
+    "preview": "mkdir -p test && cd test && vite-node ../bin/wp-pwa.ts preview"
   },
   "dependencies": {
     "@php-wasm/node": "^0.5.2",
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
+    "vite-node": "^2.1.8",
     "vitest": "latest"
   }
 }
