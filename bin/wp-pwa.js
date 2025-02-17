@@ -6,7 +6,7 @@ import path from "node:path";
 const sProg = path.basename(process.argv[1]);
 const sCommand = process.argv[2];
 const oLoader = new PhpLoader();
-let app:any = null;
+let app = null;
 switch(sCommand){
     case "build":
         await oLoader.build(process.argv[3]);
