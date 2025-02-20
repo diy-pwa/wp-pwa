@@ -2,9 +2,11 @@
 
 import PhpLoader from '../lib/index.js';
 import path from "node:path";
+import info from "../package.json" with { type: "json" };
 
 const sProg = path.basename(process.argv[1]);
 const sCommand = process.argv[2];
+console.log(`${sProg} ${sCommand||"none"} version ${info.version}`);
 const oLoader = new PhpLoader();
 let app = null;
 switch(sCommand){
