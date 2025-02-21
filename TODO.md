@@ -2,5 +2,6 @@
 
 1. add otel
 2. make an image on a push
+3. make a pv
 1. Update README.md
 1. make a YouTube video to show how to use
