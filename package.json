@@ -6,30 +6,15 @@
   "bin": {
     "wp-pwa": "bin/wp-pwa.js"
   },
-  "files": [
-    "!wp-config.php",
-    "!wp-content"
-  ],
-  "scripts": {
-    "start": "vitest run spec",
-    "test": "vitest run spec",
-    "dev": "mkdir -p test && cd test && vite-node ../bin/wp-pwa.ts dev",
-    "build": "mkdir -p test && cd test && vite-node ../bin/wp-pwa.ts build",
-    "preview": "mkdir -p test && cd test && vite-node ../bin/wp-pwa.ts preview"
-  },
   "dependencies": {
-    "@php-wasm/node": "^0.5.2",
-    "compressible": "^2.0.18",
-    "compression": "^1.7.4",
-    "diy-pwa": "^1.1.4",
-    "express": "^4.18.2",
-    "express-fileupload": "^1.4.3",
-    "fast-xml-parser": "^4.5.0",
-    "xml-formatter": "^3.6.3"
-  },
-  "devDependencies": {
-    "@types/node": "^20.12.12",
-    "vite-node": "^2.1.8",
-    "vitest": "latest"
+    "@php-wasm/node": "latest",
+    "@php-wasm/universal": "latest",
+    "compressible": "latest",
+    "compression": "latest",
+    "express": "latest",
+    "express-fileupload": "latest",
+    "fast-xml-parser": "latest",
+    "xml-formatter": "latest",
+    "jszip": "latest"
   }
 }
